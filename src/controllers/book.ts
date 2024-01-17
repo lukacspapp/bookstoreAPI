@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { Book } from '../models/book';
 
-const BOOKKEYS = ['ISBN', 'title', 'author', 'price', 'quantity', 'isStockLow'];
+const BOOK_KEYS = ['ISBN', 'title', 'author', 'price', 'quantity', 'isStockLow'];
 
 export const createABook = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -54,7 +54,7 @@ export const updateABook = async (req: Request, res: Response): Promise<void> =>
     const invalidKeys: string[] = [];
 
     Object.keys(req.body).forEach(key => {
-      if (BOOKKEYS.includes(key)) {
+      if (BOOK_KEYS.includes(key)) {
         updateData[key] = req.body[key];
       } else {
         invalidKeys.push(key);
