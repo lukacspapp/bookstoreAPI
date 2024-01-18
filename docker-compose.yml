@@ -5,15 +5,4 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_URI=mongodb://mongo:27017/bookstore-db
-    depends_on:
-      - mongo
-  mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
-volumes:
-  mongo-data:
+      - DB_URI=mongodb+srv://test:test@bookstoredb.sht6mkg.mongodb.net/?retryWrites=true&w=majority

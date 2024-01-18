@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose';
 
-interface Book extends Document{
+export interface Book extends Document{
   ISBN: string;
   title: string;
   author: string,

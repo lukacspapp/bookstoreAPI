@@ -19,3 +19,5 @@ mongodb://localhost/bookstore-db
 ```
 
 The server will run on http://localhost:3000
+
+DB_URI=mongodb+srv://test:test@bookstoredb.sht6mkg.mongodb.net/?retryWrites=true&w=majority
