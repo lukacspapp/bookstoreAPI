@@ -68,11 +68,18 @@ export const updateABook = async (req: Request, res: Response): Promise<void> =>
       return;
     }
 
+    if (updateData.quantity && updateData.quantity <= THRESHOLD_FOR_LOW_STOCK) {
+
+      updateData.isStockLow = true;
+      await sendNotification({ type: 'lowStock', details: updateData as Book });
+
+    } else {
+      updateData.isStockLow = false;
+    }
+
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, updateData, { new: true });
+
     if (updatedBook) {
-      if (updatedBook.quantity <= THRESHOLD_FOR_LOW_STOCK) {
-        await sendNotification({ type: 'lowStock', details: updatedBook });
-      }
       res.status(200).json(updatedBook);
     } else {
       res.status(404).json({ message: 'Book not found' });
