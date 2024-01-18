@@ -67,3 +67,10 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
 ## API Documentation
 - API documentation is available on [Confluence](https://papplukacs.atlassian.net/wiki/spaces/BSA/overview)
 
+## Docker Image
+- The Docker image is available on [Docker Hub](https://hub.docker.com/r/papplukacs/bookstore-api)
+- Pull the image using:
+  ```
+  docker pull papplukacs/bookstore-api:v1.0
+  ```
+
