@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import { Book } from '../models/book';
+import { sendNotification } from '../utils/notification-service';
 
 const BOOK_KEYS = ['ISBN', 'title', 'author', 'price', 'quantity', 'isStockLow'];
+const THRESHOLD_FOR_LOW_STOCK = 5;
 
 export const createABook = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -68,6 +70,9 @@ export const updateABook = async (req: Request, res: Response): Promise<void> =>
 
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, updateData, { new: true });
     if (updatedBook) {
+      if (updatedBook.quantity <= THRESHOLD_FOR_LOW_STOCK) {
+        await sendNotification({ type: 'lowStock', details: updatedBook });
+      }
       res.status(200).json(updatedBook);
     } else {
       res.status(404).json({ message: 'Book not found' });
