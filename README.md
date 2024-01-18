@@ -16,7 +16,7 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
 ## Installation
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/bookstoreAPI.git
+   git clone https://github.com/lukacspapp/bookstoreAPI.git
    ```
 2. Navigate to the project directory:
    ```
