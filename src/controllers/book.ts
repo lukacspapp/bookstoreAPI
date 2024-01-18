@@ -52,6 +52,7 @@ export const getBookByISBN = async (req: Request, res: Response): Promise<void> 
 
 export const updateABook = async (req: Request, res: Response): Promise<void> => {
   try {
+    const bookId = req.params.id;
     const updateData: Record<string, any> = {};
     const invalidKeys: string[] = [];
 
@@ -68,17 +69,24 @@ export const updateABook = async (req: Request, res: Response): Promise<void> =>
       return;
     }
 
-    if (updateData.quantity && updateData.quantity <= THRESHOLD_FOR_LOW_STOCK) {
-
-      updateData.isStockLow = true;
-      await sendNotification({ type: 'lowStock', details: updateData as Book });
-
-    } else {
-      updateData.isStockLow = false;
+    if (updateData.ISBN) {
+      const existingBookWithISBN = await Book.findOne({ ISBN: updateData.ISBN, _id: { $ne: bookId } });
+      if (existingBookWithISBN) {
+        res.status(400).json({ message: 'ISBN already exists' });
+        return;
+      }
     }
 
-    const updatedBook = await Book.findByIdAndUpdate(req.params.id, updateData, { new: true });
+    if (typeof updateData.quantity !== 'undefined') {
+      updateData.isStockLow = updateData.quantity <= THRESHOLD_FOR_LOW_STOCK;
+    } else {
+      const currentBook = await Book.findById(bookId);
+      if (currentBook) {
+        updateData.isStockLow = currentBook.quantity <= THRESHOLD_FOR_LOW_STOCK;
+      }
+    }
 
+    const updatedBook = await Book.findByIdAndUpdate(bookId, updateData, { new: true });
     if (updatedBook) {
       res.status(200).json(updatedBook);
     } else {

@@ -124,6 +124,55 @@ describe('Update a Book', () => {
     expect(mockResponse.json).toHaveBeenCalledWith(updatedBook);
   })
 
+  it('should return 400 if trying to update with a duplicate ISBN', async () => {
+    const mockRequest = {
+      params: {
+        id: '1'
+      },
+      body: {
+        ISBN: 'duplicateISBN'
+      }
+    } as unknown as Request;
+
+    const mockResponse = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    } as unknown as Response;
+
+    (Book.findOne as jest.MockedFunction<typeof Book.findOne>).mockResolvedValue(mockBooks[1] as any); // Simulate finding another book with the same ISBN
+
+    await updateABook(mockRequest, mockResponse);
+
+    expect(mockResponse.status).toHaveBeenCalledWith(400);
+    expect(mockResponse.json).toHaveBeenCalledWith({ message: 'ISBN already exists' });
+  });
+
+
+  it('should correctly update the isStockLow status when quantity is changed', async () => {
+    const mockRequest = {
+      params: {
+        id: '1'
+      },
+      body: {
+        quantity: 3 // A quantity that triggers low stock status
+      }
+    } as unknown as Request;
+
+    const mockResponse = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    } as unknown as Response;
+
+    const updatedBook = { ...mockBooks[0], quantity: 3, isStockLow: true };
+
+    (Book.findByIdAndUpdate as jest.MockedFunction<typeof Book.findByIdAndUpdate>).mockResolvedValue(updatedBook as any);
+
+    await updateABook(mockRequest, mockResponse);
+
+    expect(mockResponse.status).toHaveBeenCalledWith(200);
+    expect(mockResponse.json).toHaveBeenCalledWith(updatedBook);
+  });
+
   it('should return 404 if book does not exist', async () => {
     const mockRequest = {
       params: {

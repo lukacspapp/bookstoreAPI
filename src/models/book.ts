@@ -18,5 +18,7 @@ const bookSchema = new mongoose.Schema({
   isStockLow: {type: Boolean, required: true},
 })
 
+bookSchema.index({ title: 1, author: 1 }, { unique: true });
+
 export const Book = mongoose.model<Book>('Book', bookSchema)
 
