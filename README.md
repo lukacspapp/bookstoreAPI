@@ -8,10 +8,10 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
 - **Node.js**
 - **Express.js**
 - **MongoDB**
-- **Mongoose**:.
-- **Docker**:
-- **Jest**:
-- **MongoDB-Memory-Server**:
+- **Mongoose**
+- **Docker**
+- **Jest**
+- **MongoDB-Memory-Server**
 
 ## Installation
 1. Clone the repository:
