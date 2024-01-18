@@ -66,14 +66,12 @@ export const updateABook = async (req: Request, res: Response): Promise<void> =>
 
     if (invalidKeys.length > 0) {
       res.status(400).json({ message: `Invalid field(s) provided: ${invalidKeys.join(', ')}` });
-      return;
     }
 
     if (updateData.ISBN) {
       const existingBookWithISBN = await Book.findOne({ ISBN: updateData.ISBN, _id: { $ne: bookId } });
       if (existingBookWithISBN) {
         res.status(400).json({ message: 'ISBN already exists' });
-        return;
       }
     }
 
