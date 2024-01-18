@@ -87,7 +87,13 @@ export const updateABook = async (req: Request, res: Response): Promise<void> =>
     }
 
     const updatedBook = await Book.findByIdAndUpdate(bookId, updateData, { new: true });
+
     if (updatedBook) {
+
+      if (updatedBook.isStockLow) {
+        await sendNotification({ type: 'lowStock', details: updatedBook});
+      }
+
       res.status(200).json(updatedBook);
     } else {
       res.status(404).json({ message: 'Book not found' });
