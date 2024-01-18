@@ -2,7 +2,7 @@
 
 ## Considerations for Future Development
 
-### **_User Authentication_**
+### User Authentication
 
 - **Role-Based Access Control**: Implement role-based access control to restrict access to certain endpoints based on user roles. JWTs or session-based authentication can be utilized.
 - **Securely Managing Environment Variables**: Ensure that `.env` files or environment variables are securely managed, particularly in production environments.
