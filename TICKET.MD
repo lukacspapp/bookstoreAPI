@@ -4,7 +4,7 @@
 
 We are developing a bookstore management system that requires a microservice, named *Service Notifier*, to handle notifications. This microservice will be responsible for receiving data from the bookstoreAPI and sending notifications accordingly.
 
-API documentation is available [here](https://papplukacs.atlassian.net/jira/software/projects/BOOK/boards/1?selectedIssue=BOOK-9).
+API documentation is available [here](https://papplukacs.atlassian.net/wiki/spaces/BSA/overview).
 
 ## Requirements
 
