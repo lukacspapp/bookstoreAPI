@@ -1,0 +1,52 @@
+[
+  {
+    "ISBN": "978-3-22-148455-0",
+    "title": "Dog Peter",
+    "author": "Macska Janos",
+    "price": 10.99,
+    "quantity": 20,
+    "isStockLow": false,
+    "_id": "65a919ba86950e4eccb4403e",
+    "__v": 0
+  },
+  {
+    "ISBN": "978-1-23-456789-0",
+    "title": "The Mysterious Island",
+    "author": "Jane Doe",
+    "price": 15.50,
+    "quantity": 5,
+    "isStockLow": true,
+    "_id": "65a919ba86950e4eccb4403f",
+    "__v": 0
+  },
+  {
+    "ISBN": "978-4-56-789123-1",
+    "title": "Journey to the West",
+    "author": "Liu Yang",
+    "price": 20.00,
+    "quantity": 10,
+    "isStockLow": false,
+    "_id": "65a919ba86950e4eccb44040",
+    "__v": 0
+  },
+  {
+    "ISBN": "978-0-98-765432-2",
+    "title": "Adventures of the Mind",
+    "author": "Alex Johnson",
+    "price": 12.99,
+    "quantity": 0,
+    "isStockLow": true,
+    "_id": "65a919ba86950e4eccb44041",
+    "__v": 0
+  },
+  {
+    "ISBN": "978-5-10-111213-3",
+    "title": "Secrets of the Ocean",
+    "author": "Sarah Smith",
+    "price": 18.75,
+    "quantity": 15,
+    "isStockLow": false,
+    "_id": "65a919ba86950e4eccb44042",
+    "__v": 0
+  }
+]
