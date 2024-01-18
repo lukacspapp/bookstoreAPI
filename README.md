@@ -39,16 +39,35 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
      ```
 
 ## Running the Application
-1. To run the application locally:
+1. Locally:
    ```
    npm run start
    ```
-2. To run the application using Docker:
+2. Using Docker:
    - Ensure Docker is installed on your machine.
    - Build and run the container:
      ```sh
      docker-compose up --build
      ```
+3. Using Docker image:
+   - Pull the image from Docker Hub:
+     ```
+     docker pull papplukacs/bookstore-api:v1.0
+     ```
+   - Run the Docker image as a container (named bookstore-container)::
+     ```
+     docker run -p 3000:3000 --name bookstore-container papplukacs/bookstore-api:v1.0
+     ```
+  - The API will be available at `http://localhost:3000/api/books`
+  - Stop the container using:
+    ```
+    docker stop <container-id> or docker stop bookstore-container
+    ```
+  - Remove the container using:
+    ```
+    docker rm <container-id> or docker rm bookstore-container
+    ```
+
 
 ## API Endpoints
 - `GET /api/books`: Retrieve all books in the inventory.
@@ -69,8 +88,6 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
 
 ## Docker Image
 - The Docker image is available on [Docker Hub](https://hub.docker.com/r/papplukacs/bookstore-api)
-- Pull the image using:
-  ```
-  docker pull papplukacs/bookstore-api:v1.0
-  ```
 
+## Testing the API
+- Postman Collection is available [here](https://github.com/lukacspapp/bookstoreAPI/blob/master/BookstoreAPI.postman_collection.json)
