@@ -8,6 +8,9 @@
 - **Securely Managing Environment Variables**: Ensure that `.env` files or environment variables are securely managed, particularly in production environments.
 - **Comprehensive Testing**: Include thorough testing of Authentication endpoints to ensure security and functionality.
 
+### Error Handling
+- Custom error handling can be implemented to provide more detailed error messages and status codes.
+
 ## Features and Logic
 
 ### ISBN Number Accessibility
