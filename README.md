@@ -91,3 +91,7 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
 
 ## Testing the API
 - Postman Collection is available [here](https://github.com/lukacspapp/bookstoreAPI/blob/master/BookstoreAPI.postman_collection.json)
+
+## Deployment
+The Bookstore API is currently deployed on Render and can be accessed at the following base URI:
+[https://bookstoreapi-ui68.onrender.com/](https://bookstoreapi-ui68.onrender.com/)
