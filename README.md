@@ -41,7 +41,7 @@ Bookstore API is a RESTful service designed for managing a bookstore's inventory
 ## Running the Application
 1. Locally:
    ```
-   npm run start
+   npm run dev
    ```
 2. Using Docker:
    - Ensure Docker is installed on your machine.
