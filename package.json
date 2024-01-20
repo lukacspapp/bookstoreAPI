@@ -2,11 +2,11 @@
   "name": "bookstoreapi",
   "version": "1.0.0",
   "description": "Hello World",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "test": "NODE_ENV=test jest --testTimeout=5000",
     "dev": "nodemon --exec ts-node src/server.ts",
-    "build": "npm run build && node dist/server.js",
+    "build": "npm install && tsc",
     "start": "node dist/server.js"
   },
   "author": "",
